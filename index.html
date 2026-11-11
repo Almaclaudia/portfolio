@@ -270,7 +270,24 @@
 
     .bigname{font-size:15vw; line-height:0.9; margin-bottom:34px; white-space:normal;}
 
-    #mobile-nav{display:block; margin-bottom:10px;}
+    #mobile-nav{display:none !important;}
+    /* landing: same composition as desktop, vertical */
+    #face-front{min-height:100svh; display:flex !important; flex-direction:column; justify-content:flex-end; padding:24px 22px 34px;}
+    #face-front .header-row{display:flex; position:absolute; top:26px; left:22px; right:22px; gap:0;}
+    #face-front .header-row .name{font-size:20px;}
+    #face-front .portfolio-corner{display:block; position:absolute; top:26px; right:22px;}
+    #face-front .portfolio-corner .nav-label{font-size:14px;}
+    #face-front .nav-row-center{display:flex; flex-direction:column; align-items:flex-end; position:absolute; top:58px; right:22px; left:auto; transform:none; gap:8px;}
+    #face-front .nav-row-center .contacts-reveal{left:auto; right:0; text-align:right;}
+    #face-front .nav-row-center .nav-label{display:block; font-size:14px;}
+    #face-front .subline{display:block; position:static;}
+    #face-front .subline .rule{position:absolute; top:54px; left:22px; margin:0;}
+    #face-front .subline .tagline{position:absolute; top:64px; left:22px; font-size:15px; line-height:1.25; max-width:none;}
+    #face-front .subline .extra{position:absolute; left:22px; right:22px; bottom:calc(46px + 16vw); margin:0; font-size:17px; max-width:290px;}
+    #face-front .ghost-grid{display:grid; position:absolute; top:200px; left:22px; right:22px; bottom:auto; grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:12px; row-gap:12px;}
+    #face-front .ghost-grid div{aspect-ratio:4/5 !important;}
+    #face-front .bigname{font-size:17.5vw; margin-bottom:0; white-space:nowrap;}
+
     .mnav-item{
       font-family:'Bricolage Grotesque', sans-serif; font-weight:600; font-size:24px;
       text-transform:uppercase; letter-spacing:0.04em; color:#1c1b19;
@@ -506,7 +523,7 @@
       </div>
 
       <div class="portfolio-corner">
-        <div class="nav-label nav-clickable" onclick="flipPage()">Portfolio</div>
+        <div class="nav-label nav-clickable" onclick="if(window.innerWidth<=927){document.querySelector('.gallery').scrollIntoView({behavior:'smooth'})}else{flipPage()}">Portfolio</div>
       </div>
 
       <div class="ghost-grid">
