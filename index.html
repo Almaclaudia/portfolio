@@ -250,7 +250,9 @@
   #mobile-nav{display:none;}
 
   @media (max-width:927px){
-    body{padding:0;}
+    html, body{height:auto;}
+    body{padding:0; display:block; min-height:0;}
+    #face-front, #face-back, #stage.flipped #face-front{pointer-events:auto !important;}
     .note{display:none;}
 
     #stage-outer{width:100%; max-width:100%; height:auto !important; overflow:visible;}
@@ -933,6 +935,7 @@ function closeProject(fromHash){
   currentProject = null;
   if(!fromHash && location.hash){ history.pushState(null, '', location.pathname + location.search); }
   if(!flipped) flipPage();
+  if(window.innerWidth <= 927){ var g=document.querySelector('.gallery'); if(g) g.scrollIntoView(); }
 }
 
 function openLightbox(i){
