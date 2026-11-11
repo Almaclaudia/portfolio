@@ -271,6 +271,17 @@
     .bigname{font-size:15vw; line-height:0.9; margin-bottom:34px; white-space:normal;}
 
     #mobile-nav{display:none !important;}
+    /* one face at a time, like the desktop card */
+    #face-front{height:100svh; overflow:hidden;}
+    #face-back{display:none !important;}
+    #stage.flipped #face-front{display:none !important;}
+    #stage.flipped #face-back{display:block !important;}
+    #stage-outer{perspective:1600px;}
+    #stage-outer.flip-anim{animation:mflip .55s cubic-bezier(.4,.2,.2,1);}
+    @keyframes mflip{from{transform:rotateY(90deg);} to{transform:rotateY(0deg);}}
+    #face-back > .portfolio-corner{display:block; position:relative; top:auto; right:auto; text-align:right; margin-bottom:24px;}
+    #face-back > .portfolio-corner .nav-label{font-size:14px;}
+    #bio-photo-half{display:none !important;}
     /* landing: same composition as desktop, vertical */
     #face-front{min-height:100svh; display:flex !important; flex-direction:column; justify-content:flex-end; padding:24px 22px 34px;}
     #face-front .header-row{display:flex; position:absolute; top:26px; left:22px; right:22px; gap:0;}
@@ -523,7 +534,7 @@
       </div>
 
       <div class="portfolio-corner">
-        <div class="nav-label nav-clickable" onclick="if(window.innerWidth<=927){document.querySelector('.gallery').scrollIntoView({behavior:'smooth'})}else{flipPage()}">Portfolio</div>
+        <div class="nav-label nav-clickable" onclick="flipPage()">Portfolio</div>
       </div>
 
       <div class="ghost-grid">
@@ -709,6 +720,11 @@ function flipPage(){
   stage.classList.toggle('flipped', flipped);
   front.style.pointerEvents = flipped ? 'none' : 'auto';
   back.style.pointerEvents = flipped ? 'auto' : 'none';
+  if(window.innerWidth <= 927){
+    var o = document.getElementById('stage-outer');
+    o.classList.remove('flip-anim'); void o.offsetWidth; o.classList.add('flip-anim');
+    window.scrollTo(0, 0);
+  }
 }
 var nameEl = document.getElementById('name-el');
 var ruleEl = document.getElementById('rule-el');
