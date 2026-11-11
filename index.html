@@ -328,9 +328,11 @@
   }
   .pj-bar .name{font-family:'Bricolage Grotesque', sans-serif; font-weight:600; font-size:22px; cursor:pointer;}
   .pj-body{position:relative; z-index:1; flex:1 1 auto; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,2fr); min-height:0;}
-  .pj-media{overflow-y:auto; padding:34px 40px 40px; display:flex; flex-direction:column; gap:14px; scrollbar-width:thin;}
+  .pj-media{overflow-y:auto; padding:34px 40px 80px; display:flex; flex-direction:column; gap:14px; scrollbar-width:none; -ms-overflow-style:none;
+    -webkit-mask-image:linear-gradient(to bottom, #000 calc(100% - 70px), transparent); mask-image:linear-gradient(to bottom, #000 calc(100% - 70px), transparent);}
+  .pj-media::-webkit-scrollbar{display:none;}
   .pj-media img, .pj-media video{
-    display:block; width:calc((100vh - 150px) / 3.1); max-width:100%; min-width:170px; height:auto;
+    display:block; width:100%; height:auto;
     background:#efede6; cursor:zoom-in; transition:opacity .2s ease;
   }
   .pj-media img:hover, .pj-media video:hover{opacity:0.85;}
@@ -395,7 +397,7 @@
     .pj-text{order:1; overflow:visible; padding:24px 20px 8px;}
     .pj-grid, .pj-main{display:block;}
     .pj-title{font-size:36px;}
-    .pj-media{order:2; overflow:visible; padding:8px 20px 40px;}
+    .pj-media{order:2; overflow:visible; padding:8px 20px 40px; -webkit-mask-image:none; mask-image:none;}
     .pj-media img, .pj-media video{width:100%; max-width:none; min-width:0; height:auto;}
     .lb-prev, .lb-next{font-size:34px; padding:12px;}
   }
